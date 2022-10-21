@@ -9,6 +9,7 @@ namespace RecipeBook.Data.Models
         public Guid Id { get; set; }
         [Required]
         public string Text { get; set; }
+        [Required]
         public Recipe Recipe { get; set; } //to set up one-to-many relationship;
     }
 }
