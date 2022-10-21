@@ -1,4 +1,4 @@
-﻿namespace RecipeBook.UIConstants
+﻿namespace RecipeBook.Data.Constants
 {
     public enum RecipeCategory
     {

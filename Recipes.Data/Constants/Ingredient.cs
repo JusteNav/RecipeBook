@@ -1,4 +1,4 @@
-﻿namespace RecipeBook.Constant
+﻿namespace RecipeBook.Data.Constants
 {
     public enum Ingredient
     {

@@ -1,6 +1,7 @@
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using RecipeBook.Data;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace RecipeBook
 {
@@ -18,6 +19,8 @@ namespace RecipeBook
 
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<IdentityContext>();
+            builder.Services.AddDbContext<RecipeContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("RecipeContext") ?? throw new InvalidOperationException("Connection string 'RecipeContext' not found.")));
             builder.Services.AddRazorPages();
 
             var app = builder.Build();

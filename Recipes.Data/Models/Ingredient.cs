@@ -1,4 +1,4 @@
-﻿using RecipeBook.UIConstants;
+﻿using RecipeBook.Data.Constants;
 using System.ComponentModel.DataAnnotations;
 
 namespace RecipeBook.Data.Models
