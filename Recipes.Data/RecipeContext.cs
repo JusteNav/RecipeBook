@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using RecipeBook.Data.Models;
 
 namespace RecipeBook.Data
+
 {
     public class RecipeContext : DbContext
     {
