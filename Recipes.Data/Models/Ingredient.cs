@@ -12,7 +12,7 @@ namespace RecipeBook.Data.Models
         [Display(Name = "Title")]
         public string FullTitle { get; set; }
         [Required]
-        public RecipeCategory Category { get; set; }
+        public Ingredient Category { get; set; }
 
         public ICollection<Recipe> Recipes { get; set; } //to set up many-to-many relationship;
     }

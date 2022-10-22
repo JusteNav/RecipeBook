@@ -15,7 +15,7 @@ namespace RecipeBook.Data.Models
         [Display(Name = "Picture Title")]
         public string PictureTitle { get; set; }
         [Required]
-        public ICollection<Ingredient> Ingredients { get; set; } //to set up many-to-many relationship;        [Required]
+        public ICollection<Ingredient> Ingredients { get; set; } //to set up many-to-many relationship;
         [Required]
         public ICollection<Step> Steps { get; set; } //to set up one-to-many relationship;
     }
