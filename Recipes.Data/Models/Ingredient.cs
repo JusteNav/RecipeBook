@@ -12,8 +12,8 @@ namespace RecipeBook.Data.Models
         [Display(Name = "Title")]
         public string FullTitle { get; set; }
         [Required]
-        public RecipeBook.Data.Constants.Ingredient Category { get; set; }
-
-        public ICollection<Recipe> Recipes { get; set; } //to set up many-to-many relationship;
+        public IngredientType Category { get; set; }
+        [Required]
+        public Recipe Recipe { get; set; } //to set up one-to-many relationship
     }
 }

@@ -1,0 +1,7 @@
+Type of foods/ meals:
+Salads,
+Soups,
+Desserts,
+Main,
+Juices, 
+Sandwiches.
