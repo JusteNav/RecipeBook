@@ -53,8 +53,8 @@ namespace RecipeBook.Data.Constants
         Mustard,
         [Description("Thousand Island Dressing")]
         ThousandIslandDressing,
-        [Description("Baking Powder")]
         Mayonnaise,
+        [Description("Baking Powder")]
         BakingPowder,
         [Description("Dark Chocolate Chips")]
         DarkChocolateChips,

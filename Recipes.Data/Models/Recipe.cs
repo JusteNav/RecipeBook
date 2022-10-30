@@ -1,5 +1,6 @@
 ﻿using RecipeBook.Data.Constants;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RecipeBook.Data.Models
 {
@@ -13,11 +14,12 @@ namespace RecipeBook.Data.Models
         [Required]
         public RecipeCategory Category { get; set; }
         [Display(Name = "Picture Title")]
-        public string PictureTitle { get; set; }
-        public string Note { get; set; }
+        public string? PictureTitle { get; set; }
+        public string? Note { get; set; }
         [Required]
         public ICollection<Ingredient> Ingredients { get; set; } //to set up one-to-many relationship;
         [Required]
         public ICollection<Step> Steps { get; set; } //to set up one-to-many relationship;
+
     }
 }

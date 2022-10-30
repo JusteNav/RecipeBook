@@ -18,5 +18,20 @@ namespace RecipeBook.Data
         public DbSet<Recipe> Recipes { get; set; } = default!;
         public DbSet<Ingredient> Ingredients { get; set; } = default!;
         public DbSet<Step> Steps { get; set; } = default!;
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<Step>()
+                .HasOne(c => c.Recipe)
+                .WithMany(e => e.Steps)
+                .IsRequired();
+
+            builder.Entity<Ingredient>()
+               .HasOne(c => c.Recipe)
+               .WithMany(e => e.Ingredients)
+               .IsRequired();
+
+            builder.Seed();
+        }
     }
 }
