@@ -55,6 +55,7 @@ namespace RecipeBook.Data
             {
                 Id = Guid.NewGuid(),
                 FullTitle = "A pinch of salt (tip of the teaspoon)",
+                Category= Constants.IngredientType.Optional,
                 RecipeId = recipe1.Id
             };
             var ingredient16 = new Ingredient
@@ -148,6 +149,7 @@ namespace RecipeBook.Data
             {
                 Id = Guid.NewGuid(),
                 FullTitle = "2 teaspoons sugar (optional)",
+                Category = Constants.IngredientType.Optional,
                 RecipeId = recipe2.Id
             };
 
@@ -196,12 +198,14 @@ namespace RecipeBook.Data
             {
                 Id = Guid.NewGuid(),
                 FullTitle = "2 stalks celery (optional)",
+                Category = Constants.IngredientType.Optional,
                 RecipeId = recipe3.Id
             };
             var ingredient34 = new Ingredient
             {
                 Id = Guid.NewGuid(),
                 FullTitle = "1,5 cm piece of fresh ginger (optional)",
+                Category = Constants.IngredientType.Optional,
                 RecipeId = recipe3.Id
             };
 

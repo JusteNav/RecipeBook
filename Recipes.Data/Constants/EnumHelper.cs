@@ -17,20 +17,11 @@ namespace RecipeBook.Data.Constants
         public static readonly string[] IngredientCategoryText = IngredientCategories.Select(category => GetValueOrDescriptionString(category, typeof(IngredientType))).ToArray();
 
         public static readonly string[] RecipeCategories = Enum.GetNames<RecipeCategory>();
+        public static readonly int[] RecipeCategoryIDs = RecipeCategories.Select(c => GetEnumID(c, typeof(RecipeCategory))).ToArray();
+        public static readonly string[] RecipeCategoryText= RecipeCategories.Select(category => GetValueOrDescriptionString(category, typeof(RecipeCategory))).ToArray();
 
 
-        //Both methods return either the value or a Description or, if there is no description, the value of an enum.
-        public static string GetValueOrAttributeString<T>(this Enum enumVal) where T : Attribute
-        {
-            var type = enumVal.GetType();
-
-            var memInfo = type.GetMember(enumVal.ToString());
-
-            var attributes = memInfo[0].GetCustomAttributes(typeof(T), false);
-
-            return (attributes.Length > 0) ? (string)attributes[0] : enumVal.ToString();
-        }
-
+        //Method returns either the value or a Description or, if there is no description, the value of an enum.
         public static string GetValueOrDescriptionString(string enumString, Type enumType)
         {
             var enumVal = Enum.Parse(enumType, enumString);

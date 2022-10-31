@@ -11,7 +11,8 @@ namespace RecipeBook.Data.Models
         [Required]
         [Display(Name = "Title")]
         public string FullTitle { get; set; }
-        public IngredientType? Category { get; set; }
+        [Required]
+        public IngredientType Category { get; set; }
         [Required]
         public Guid RecipeId { get; set; } //to set up one-to-many relationship;
         [Required]

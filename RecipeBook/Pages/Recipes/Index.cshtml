@@ -10,6 +10,12 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+
+@for (int i = 1; i < Model.RecipeCategoryIds.Length; i++)
+{
+              <input type = "checkbox" name = "RecipeCategories" value = "@Model.RecipeCategoryIds[i]" > @Model.RecipeCategoriesForPrinting[i]
+}
+
 <table class="table">
     <thead>
         <tr>
@@ -18,9 +24,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DisplayedRecipes[0].Category)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DisplayedRecipes[0].PictureTitle)
             </th>
             <th></th>
         </tr>
@@ -33,9 +36,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Category)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PictureTitle)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |

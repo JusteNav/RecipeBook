@@ -32,6 +32,9 @@ namespace RecipeBook.Data
                .IsRequired();
 
             builder.Seed();
+
+            
+
         }
     }
 }

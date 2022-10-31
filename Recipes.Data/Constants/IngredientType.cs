@@ -4,6 +4,7 @@ namespace RecipeBook.Data.Constants
 {
     public enum IngredientType
     {
+        Optional,
         Flour,
         Tortillas,
         Pasta,
