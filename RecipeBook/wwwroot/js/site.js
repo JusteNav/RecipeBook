@@ -2,3 +2,11 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+$(document).ready(function () {
+    $('#id_label_multiple').select2();
+
+    function thisOnClick() {
+        this.preventDefault();
+        let izveletieIntegrenti = $('#mySelect2').find(':selected');
+    }
+});

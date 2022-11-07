@@ -4,16 +4,40 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">A fed person is a happy person!</h1>
-    <p>Please choose your ingredients:</p>
+<div class="row">
+    <div class="col-md-12">
+        <div class="text-center">
+            <h1 class="display-4">A fed person is a happy person!</h1>
+            @*<p>Please choose your ingredients:</p>*@
+        </div>
+    </div>
 </div>
-<div>
-    <form method="post">
+
+<div class="row">
+    <div class="col-md-8">
+        @*<form method="post">
         @for (int i = 1; i < Model.CategoryIds.Length; i++)
         {
-          <input type = "checkbox" name = "CheckedCategories" value = "@Model.CategoryIds[i]" > @Model.CategoriesForPrinting[i]
+        <input type = "checkbox" name = "CheckedCategories" value = "@Model.CategoryIds[i]" > @Model.CategoriesForPrinting[i]
         }
-        <input type="submit" value="Show Recipes"> 
-    </form>
+        <input type="submit" value="Show Recipes">
+        </form>*@
+
+        <label for="id_label_multiple">
+            Click this to choose your ingredients:
+
+            <form method="post">
+                <select class="js-example-basic-multiple js-states form-control" id="id_label_multiple" multiple="multiple" name="CheckedCategories">
+
+                    @for (int i = 1; i < Model.CategoryIds.Length; i++)
+                    {
+                        <option id="@Model.CategoryIds[i]" data-attr="@Model.CategoryIds[i]"> @Model.CategoriesForPrinting[i]</option>
+
+                    }
+
+                </select>
+                <input type="submit" class="poga1" value="Show Recipes" onclick="thisOnClick()">
+            </form>
+        </label>
+    </div>
 </div>

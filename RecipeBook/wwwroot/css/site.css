@@ -16,3 +16,9 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.poga1 {
+    background-color: red;
+    border-radius: 20px;
+    border: 0;
+}

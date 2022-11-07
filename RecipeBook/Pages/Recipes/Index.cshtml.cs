@@ -36,7 +36,7 @@ namespace RecipeBook.Pages.Recipes
             if (_context.Recipes != null)
             {
                 var recipes = _context.Recipes.Select(c => c);
-
+                //
                 if (!string.IsNullOrEmpty(passedIDs) )
                 {
                     //since the query required would be very complex to write and the amount of data is small, the logic is performed client-side
