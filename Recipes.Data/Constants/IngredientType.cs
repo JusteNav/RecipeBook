@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Xml.Linq;
 
 namespace RecipeBook.Data.Constants
 {
@@ -8,26 +10,33 @@ namespace RecipeBook.Data.Constants
         Flour,
         Tortillas,
         Pasta,
-        [Description("Rye Bread")]
+        //[Description("Rye Bread")]
+        [Display(Name = "Rye Bread")]
         RyeBread,
-        [Description("Toast Bread")]
+        //[Description("Toast Bread")]
+        [Display(Name = "Toast Bread")]
         ToastBread,
 
         Eggs,
         Salami,
         Ham,
         Bacon,
-        [Description("Crab Meat")]
+        //[Description("Crab Meat")]
+        [Display(Name = "Crab Meat")]
         CrabMeat,
 
         Milk,
-        [Description("Sour Cream")]
+        //[Description("Sour Cream")]
+        [Display(Name = "Sour Cream")]
         SourCream,
-        [Description("Heavy Cream")]
+       // [Description("Heavy Cream")]
+        [Display(Name = "Heavy Cream")]
         HeavyCream,
-        [Description("Cheddar Cheese")]
+        //[Description("Cheddar Cheese")]
+        [Display(Name = "Cheddar Cheese")]
         CheddarCheese,
-        [Description("Mozzarella Cheese")]
+        //[Description("Mozzarella Cheese")]
+        [Display(Name = "Mozzarella Cheese")]
         MozzarellaCheese,
         Butter,
 
@@ -36,7 +45,8 @@ namespace RecipeBook.Data.Constants
 
         Carrots,
         Potatoes,
-        [Description("Bell Pepper")]
+       // [Description("Bell Pepper")]
+        [Display(Name = "Bell Pepper")]
         BellPepper,
         Cauliflower,
         Cucumber,
@@ -46,18 +56,23 @@ namespace RecipeBook.Data.Constants
         Garlic,
 
         Sugar,
-        [Description("Brown Sugar")]
+        //[Description("Brown Sugar")]
+        [Display(Name = "Brown Sugar")]
         BrownSugar,
         Oil,
-        [Description("Tomato Sauce")]
+       // [Description("Tomato Sauce")]
+        [Display(Name = "Tomato Sauce")]
         TomatoSauce,
         Mustard,
-        [Description("Thousand Island Dressing")]
+       // [Description("Thousand Island Dressing")]
+        [Display(Name = "Thousand Island Dressing")]
         ThousandIslandDressing,
         Mayonnaise,
-        [Description("Baking Powder")]
+       // [Description("Baking Powder")]
+        [Display(Name = "Baking Powder")]
         BakingPowder,
-        [Description("Dark Chocolate Chips")]
+        //[Description("Dark Chocolate Chips")]
+        [Display(Name = "Dark Chocolate Chips")]
         DarkChocolateChips,
     }
 }

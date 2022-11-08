@@ -11,38 +11,37 @@
     <a asp-page="Create">Create New</a>
 </p>
 
-@for (int i = 1; i < Model.RecipeCategoryIds.Length; i++)
-{
-              <input type = "checkbox" name = "RecipeCategories" value = "@Model.RecipeCategoryIds[i]" > @Model.RecipeCategoriesForPrinting[i]
-}
+<div class = "tags">
+    @for (int i = 0; i < Model.RecipeCategoryIds.Length; i++)
+    {
+        <label> 
+            <input type = "checkbox" value = "@Model.RecipeCategoryIds[i]" rel = "@Model.RecipeCategoriesForPrinting[i]"> @Model.RecipeCategoriesForPrinting[i]
+        </label>
+    }
+</div>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.DisplayedRecipes[0].Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DisplayedRecipes[0].Category)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.DisplayedRecipes) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<ul class = "results">
+   @foreach (var item in Model.DisplayedRecipes) 
+   {
+        <li class="recipe @item.Category">
+            <a asp-page="./Details" asp-route-id="@item.Id"> <img class = "recipepic-small" src="~/images/@item.PictureTitle" width="200px" alt="food picture"/></a>
+            <a asp-page="./Details" asp-route-id="@item.Id"> @Html.DisplayFor(modelItem => item.Title) </a>
+        </li>
+   }
+</ul>
+
+<script>
+    $(document).ready(
+        function () {
+            $('div.tags').find(':checkbox').on('click', function () {
+
+                $('.results > li').hide();
+
+                $('div.tags').find(':checked').each(
+                    function () {
+                    $('.results > li.' + $(this).attr('rel')).show();
+                });
+            });
+});
+
+</script>

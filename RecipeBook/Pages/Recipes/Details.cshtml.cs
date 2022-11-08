@@ -20,15 +20,22 @@ namespace RecipeBook.Pages.Recipes
         }
 
       public Recipe Recipe { get; set; }
+        public List<string> Steps { get; set; }
+        public List<string> Ingredients { get; set; }
+
 
         public async Task<IActionResult> OnGetAsync(Guid? id)
         {
+
             if (id == null || _context.Recipes == null)
             {
                 return NotFound();
             }
 
-            var recipe = await _context.Recipes.FirstOrDefaultAsync(m => m.Id == id);
+            var recipe = await _context.Recipes
+                .Include(c => c.Ingredients)
+                .Include(c => c.Steps)
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (recipe == null)
             {
                 return NotFound();
@@ -36,7 +43,9 @@ namespace RecipeBook.Pages.Recipes
             else 
             {
                 Recipe = recipe;
-            }
+                Steps = recipe.Steps.OrderBy(n => n.StepNumber).Select(s => s.Text).ToList();
+                Ingredients = recipe.Ingredients.Select(i => i.FullTitle).ToList();
+            }            
             return Page();
         }
     }

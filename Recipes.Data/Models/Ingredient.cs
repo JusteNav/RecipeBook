@@ -8,14 +8,10 @@ namespace RecipeBook.Data.Models
         [Required]
         [Key]
         public Guid Id { get; set; }
-        [Required]
         [Display(Name = "Title")]
-        public string FullTitle { get; set; }
-        [Required]
-        public IngredientType Category { get; set; }
-        [Required]
-        public Guid RecipeId { get; set; } //to set up one-to-many relationship;
-        [Required]
-        public Recipe Recipe { get; set; }
+        public string? FullTitle { get; set; }
+        public IngredientType? Category { get; set; }
+        public Recipe? Recipe { get; set; } //to set up one-to-many relationship;
+        public Guid? RecipeId { get; set; }
     }
 }

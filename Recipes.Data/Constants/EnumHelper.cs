@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace RecipeBook.Data.Constants
@@ -22,7 +23,7 @@ namespace RecipeBook.Data.Constants
 
 
         //Method returns either the value or a Description or, if there is no description, the value of an enum.
-        public static string GetValueOrDescriptionString(string enumString, Type enumType)
+        private static string GetValueOrDescriptionString(string enumString, Type enumType)
         {
             var enumVal = Enum.Parse(enumType, enumString);
 
@@ -35,9 +36,26 @@ namespace RecipeBook.Data.Constants
 
         public static int GetEnumID(string enumString, Type enumType)
         {
-            var enumVal = Enum.Parse(enumType, enumString);
+            string replaced = Regex.Replace(enumString, @"\s+", ""); //removes whitespaces
+            var enumVal = Enum.Parse(enumType, replaced);
 
             return (int)enumVal;
+        }
+
+        public static IngredientType GetIngredientType(string enumString)
+        {
+            Regex.Replace(enumString, @"\s+", ""); //removes whitespaces
+            var enumVal = (IngredientType)Enum.Parse(typeof(IngredientType), enumString);
+
+            return enumVal;
+        }
+
+        public static RecipeCategory GetRecipeCategory(string enumString)
+        {
+            Regex.Replace(enumString, @"\s+", ""); //removes whitespaces
+            var enumVal = (RecipeCategory)Enum.Parse(typeof(RecipeCategory), enumString);
+
+            return enumVal;
         }
     }
 }

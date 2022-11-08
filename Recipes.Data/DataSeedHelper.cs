@@ -19,7 +19,7 @@ namespace RecipeBook.Data
                 Id = Guid.NewGuid(),
                 Title = "Thin Pancakes",
                 Category = Constants.RecipeCategory.MainCourse,
-                PictureTitle = "1",
+                PictureTitle = "1.jpg",
                 Note = "I always pour on the pancake batter using a measuring cup, so I end up with consistently-sized pancakes.",
             };
 
@@ -70,48 +70,56 @@ namespace RecipeBook.Data
             {
                 Id = Guid.NewGuid(),
                 Text = "Sift the flour, sugar and salt, make a well in it.",
+                StepNumber = 1,
                 RecipeId = recipe1.Id
             };
             var step12 = new Step
             {
                 Id = Guid.NewGuid(),
                 Text = "Crack in the eggs, add a bit of the milk.",
+                StepNumber = 2,
                 RecipeId = recipe1.Id
             };
             var step13 = new Step
             {
                 Id = Guid.NewGuid(),
                 Text = "Then start whisking it all together (you can use a mixer).",
+                StepNumber = 3,
                 RecipeId = recipe1.Id
             };
             var step14 = new Step
             {
                 Id = Guid.NewGuid(),
                 Text = "Next, whisk in the rest of the milk and until you have a pancake batter that resembles the consistency of whipping cream.",
+                StepNumber = 4,
                 RecipeId = recipe1.Id
             };
             var step15 = new Step
             {
                 Id = Guid.NewGuid(),
                 Text = "Add on a bit of oil, and quickly swirl it around the pan. Make sure your pan is evenly nice and hot before you start cooking the pancakes. If the pan isn't hot enough, the recipe won't work.",
+                StepNumber = 5,
                 RecipeId = recipe1.Id
             };
             var step16 = new Step
             {
                 Id = Guid.NewGuid(),
                 Text = "Then pour on the pancake batter and quickly swirl it around.",
+                StepNumber = 6,
                 RecipeId = recipe1.Id
             };
             var step17 = new Step
             {
                 Id = Guid.NewGuid(),
                 Text = "Cook until the batter is no longer liquid.",
+                StepNumber = 7,
                 RecipeId = recipe1.Id
             };
             var step18 = new Step
             {
                 Id = Guid.NewGuid(),
                 Text = "Serve with jam, sour cream, ice cream with berries and fruits - whatever you want!",
+                StepNumber = 8,
                 RecipeId = recipe1.Id
             };
 
@@ -120,7 +128,7 @@ namespace RecipeBook.Data
                 Id = Guid.NewGuid(),
                 Title = "Apple and Carrot Salad",
                 Category = Constants.RecipeCategory.Salad,
-                PictureTitle = "2",
+                PictureTitle = "2.jpg",
                 Note = "If you won't immediately consume the salad, spray it with a little bit of lemon juice and leave it in the fridge. Consume the same day though.",
             };
 
@@ -157,18 +165,21 @@ namespace RecipeBook.Data
             {
                 Id = Guid.NewGuid(),
                 Text = "Wash, peel and grate apples and carrots. Combine.",
+                StepNumber = 1,
                 RecipeId = recipe2.Id
             };
             var step22 = new Step
             {
                 Id = Guid.NewGuid(),
                 Text = "Add sugar and sour cream. Mix everything thoroughly so that the sugar melts to the maximum.",
+                StepNumber = 2,
                 RecipeId = recipe2.Id
             };
             var step23 = new Step
             {
                 Id = Guid.NewGuid(),
                 Text = "Serve the delicious salad to the table.",
+                StepNumber = 3,
                 RecipeId = recipe2.Id
             };
 
@@ -177,7 +188,7 @@ namespace RecipeBook.Data
                 Id = Guid.NewGuid(),
                 Title = "Carrot and Apple Juice",
                 Category = Constants.RecipeCategory.Juice,
-                PictureTitle = "6"
+                PictureTitle = "6.jpg"
             };
 
             var ingredient31 = new Ingredient
@@ -213,12 +224,14 @@ namespace RecipeBook.Data
             {
                 Id = Guid.NewGuid(),
                 Text = "Run carrots, apples, (celery) through a juicer, alternating carrot, apple, and, optionally, celery, according to manufacturer's instructions.",
+                StepNumber = 1,
                 RecipeId = recipe3.Id
             };
             var step32 = new Step
             {
                 Id = Guid.NewGuid(),
                 Text = "Add ginger to juicer and process (optional).",
+                StepNumber = 2,
                 RecipeId = recipe3.Id
             };
 

@@ -23,17 +23,13 @@ namespace RecipeBook.Data
         {
             builder.Entity<Step>()
                 .HasOne(c => c.Recipe)
-                .WithMany(e => e.Steps)
-                .IsRequired();
+                .WithMany(e => e.Steps);
 
             builder.Entity<Ingredient>()
                .HasOne(c => c.Recipe)
-               .WithMany(e => e.Ingredients)
-               .IsRequired();
+               .WithMany(e => e.Ingredients);
 
             builder.Seed();
-
-            
 
         }
     }

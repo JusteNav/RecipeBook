@@ -36,7 +36,7 @@ namespace RecipeBook.Pages
 
         public IActionResult OnPostAsync()
         {
-            DictIDs = new Dictionary<string, string> { { "passedIDs", JsonConvert.SerializeObject(checkedCategories)}};
+            DictIDs = new Dictionary<string, string> { { "passedIDs", JsonConvert.SerializeObject(checkedCategories) } };
 
             return RedirectToPage("/Recipes/Index", DictIDs);
         }

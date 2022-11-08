@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RecipeBook.Data;
 
@@ -11,9 +12,10 @@ using RecipeBook.Data;
 namespace RecipeBook.Data.Migrations.Recipe
 {
     [DbContext(typeof(RecipeContext))]
-    partial class RecipeContextModelSnapshot : ModelSnapshot
+    [Migration("20221106231208_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,13 +30,14 @@ namespace RecipeBook.Data.Migrations.Recipe
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int?>("Category")
+                    b.Property<int>("Category")
                         .HasColumnType("int");
 
                     b.Property<string>("FullTitle")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("RecipeId")
+                    b.Property<Guid>("RecipeId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -46,101 +49,101 @@ namespace RecipeBook.Data.Migrations.Recipe
                     b.HasData(
                         new
                         {
-                            Id = new Guid("01b76963-6e0e-4765-adcc-c335e276a44c"),
+                            Id = new Guid("3207a492-7363-488c-8f00-5bdc7c9a1d06"),
                             Category = 1,
                             FullTitle = "1 cup flour",
-                            RecipeId = new Guid("79cd9fae-8d92-455b-aef7-f5f52d013354")
+                            RecipeId = new Guid("281c116e-72cb-4f7f-99e9-f4abf386948e")
                         },
                         new
                         {
-                            Id = new Guid("a26b0c90-9cdc-42fd-8b6e-6ce906658315"),
+                            Id = new Guid("d38cc040-485b-4d51-b8cf-66dbb5afc539"),
                             Category = 6,
                             FullTitle = "2 eggs",
-                            RecipeId = new Guid("79cd9fae-8d92-455b-aef7-f5f52d013354")
+                            RecipeId = new Guid("281c116e-72cb-4f7f-99e9-f4abf386948e")
                         },
                         new
                         {
-                            Id = new Guid("7574c4fd-cf7a-4d26-a0c2-4b449c30a2e3"),
+                            Id = new Guid("12de0782-1326-4833-b880-2c78c227e865"),
                             Category = 11,
                             FullTitle = "1 1/4 cups milk",
-                            RecipeId = new Guid("79cd9fae-8d92-455b-aef7-f5f52d013354")
+                            RecipeId = new Guid("281c116e-72cb-4f7f-99e9-f4abf386948e")
                         },
                         new
                         {
-                            Id = new Guid("68146913-6775-4331-95dc-e530953405e9"),
+                            Id = new Guid("40c1cabe-662e-4396-b427-438156414543"),
                             Category = 28,
                             FullTitle = "1 teaspoon sugar",
-                            RecipeId = new Guid("79cd9fae-8d92-455b-aef7-f5f52d013354")
+                            RecipeId = new Guid("281c116e-72cb-4f7f-99e9-f4abf386948e")
                         },
                         new
                         {
-                            Id = new Guid("26bc0fee-8d45-4bb4-9d6f-2681e2e66802"),
+                            Id = new Guid("93922a19-a493-4890-8c67-03403eccd8bd"),
                             Category = 0,
                             FullTitle = "A pinch of salt (tip of the teaspoon)",
-                            RecipeId = new Guid("79cd9fae-8d92-455b-aef7-f5f52d013354")
+                            RecipeId = new Guid("281c116e-72cb-4f7f-99e9-f4abf386948e")
                         },
                         new
                         {
-                            Id = new Guid("d978e875-4c04-4c21-8def-cb525d765056"),
+                            Id = new Guid("47e27257-2b20-4c14-abba-b31891a311f6"),
                             Category = 30,
                             FullTitle = "Oil for frying",
-                            RecipeId = new Guid("79cd9fae-8d92-455b-aef7-f5f52d013354")
+                            RecipeId = new Guid("281c116e-72cb-4f7f-99e9-f4abf386948e")
                         },
                         new
                         {
-                            Id = new Guid("0cd168b2-0a27-4559-ba94-ed9ea209891a"),
+                            Id = new Guid("253dfe83-31f3-4c5e-b889-a5b040ba78dc"),
                             Category = 17,
                             FullTitle = "4 apples",
-                            RecipeId = new Guid("c0b7d8c2-7e8e-4e4b-906f-b132250cd9c7")
+                            RecipeId = new Guid("e56df0f6-269e-4863-9bcd-60f6ec941ace")
                         },
                         new
                         {
-                            Id = new Guid("ba406563-d1e2-4b12-b45b-f6cf822340c8"),
+                            Id = new Guid("bd22c6d0-2199-46b7-9557-8fb712eb6b6c"),
                             Category = 19,
                             FullTitle = "4 carrots",
-                            RecipeId = new Guid("c0b7d8c2-7e8e-4e4b-906f-b132250cd9c7")
+                            RecipeId = new Guid("e56df0f6-269e-4863-9bcd-60f6ec941ace")
                         },
                         new
                         {
-                            Id = new Guid("5f11ea85-70f6-454d-b0ec-d0a1ad3c7fda"),
+                            Id = new Guid("607b7d3c-b8a7-4f59-a8f5-b245eb32b1d3"),
                             Category = 12,
                             FullTitle = "2 tablespoons sour cream",
-                            RecipeId = new Guid("c0b7d8c2-7e8e-4e4b-906f-b132250cd9c7")
+                            RecipeId = new Guid("e56df0f6-269e-4863-9bcd-60f6ec941ace")
                         },
                         new
                         {
-                            Id = new Guid("6d3857a7-4e01-411f-9af9-773b0e64a1fe"),
+                            Id = new Guid("d5cfeedd-bee5-4388-9052-83d358e19e41"),
                             Category = 0,
                             FullTitle = "2 teaspoons sugar (optional)",
-                            RecipeId = new Guid("c0b7d8c2-7e8e-4e4b-906f-b132250cd9c7")
+                            RecipeId = new Guid("e56df0f6-269e-4863-9bcd-60f6ec941ace")
                         },
                         new
                         {
-                            Id = new Guid("70bcf310-88cf-4c7b-ba41-ae624096f0d5"),
+                            Id = new Guid("32871c20-1f8b-4e07-a04f-5d8588622f3a"),
                             Category = 19,
                             FullTitle = "4 carrots, trimmed",
-                            RecipeId = new Guid("7f61bf9f-677b-49df-8327-a61b11eb9068")
+                            RecipeId = new Guid("cd4a8f40-17ba-48b7-8239-b93dfaacb437")
                         },
                         new
                         {
-                            Id = new Guid("fc9b5e66-f2c6-4567-9399-e409bc0bbf98"),
+                            Id = new Guid("184099bb-f53d-430e-af9b-4e958164648b"),
                             Category = 17,
                             FullTitle = "2 apples, quartered",
-                            RecipeId = new Guid("7f61bf9f-677b-49df-8327-a61b11eb9068")
+                            RecipeId = new Guid("cd4a8f40-17ba-48b7-8239-b93dfaacb437")
                         },
                         new
                         {
-                            Id = new Guid("696996e4-013e-4433-8f6a-5e355bcae47b"),
+                            Id = new Guid("3c105878-3d07-4161-8e98-bbb7047dbc15"),
                             Category = 0,
                             FullTitle = "2 stalks celery (optional)",
-                            RecipeId = new Guid("7f61bf9f-677b-49df-8327-a61b11eb9068")
+                            RecipeId = new Guid("cd4a8f40-17ba-48b7-8239-b93dfaacb437")
                         },
                         new
                         {
-                            Id = new Guid("c0974234-ebdd-414b-b74f-eb38f8e70485"),
+                            Id = new Guid("bc35dbf7-0d0a-4139-8d2d-7556ff27b99a"),
                             Category = 0,
                             FullTitle = "1,5 cm piece of fresh ginger (optional)",
-                            RecipeId = new Guid("7f61bf9f-677b-49df-8327-a61b11eb9068")
+                            RecipeId = new Guid("cd4a8f40-17ba-48b7-8239-b93dfaacb437")
                         });
                 });
 
@@ -170,7 +173,7 @@ namespace RecipeBook.Data.Migrations.Recipe
                     b.HasData(
                         new
                         {
-                            Id = new Guid("79cd9fae-8d92-455b-aef7-f5f52d013354"),
+                            Id = new Guid("281c116e-72cb-4f7f-99e9-f4abf386948e"),
                             Category = 2,
                             Note = "I always pour on the pancake batter using a measuring cup, so I end up with consistently-sized pancakes.",
                             PictureTitle = "1",
@@ -178,7 +181,7 @@ namespace RecipeBook.Data.Migrations.Recipe
                         },
                         new
                         {
-                            Id = new Guid("c0b7d8c2-7e8e-4e4b-906f-b132250cd9c7"),
+                            Id = new Guid("e56df0f6-269e-4863-9bcd-60f6ec941ace"),
                             Category = 0,
                             Note = "If you won't immediately consume the salad, spray it with a little bit of lemon juice and leave it in the fridge. Consume the same day though.",
                             PictureTitle = "2",
@@ -186,7 +189,7 @@ namespace RecipeBook.Data.Migrations.Recipe
                         },
                         new
                         {
-                            Id = new Guid("7f61bf9f-677b-49df-8327-a61b11eb9068"),
+                            Id = new Guid("cd4a8f40-17ba-48b7-8239-b93dfaacb437"),
                             Category = 4,
                             PictureTitle = "6",
                             Title = "Carrot and Apple Juice"
@@ -199,13 +202,14 @@ namespace RecipeBook.Data.Migrations.Recipe
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("RecipeId")
+                    b.Property<Guid>("RecipeId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int?>("StepNumber")
+                    b.Property<int>("StepNumber")
                         .HasColumnType("int");
 
                     b.Property<string>("Text")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -217,92 +221,92 @@ namespace RecipeBook.Data.Migrations.Recipe
                     b.HasData(
                         new
                         {
-                            Id = new Guid("071f527d-cfcf-4445-94c1-309998365317"),
-                            RecipeId = new Guid("79cd9fae-8d92-455b-aef7-f5f52d013354"),
+                            Id = new Guid("66dfebf1-50cd-4e06-bc8d-e241ba44f698"),
+                            RecipeId = new Guid("281c116e-72cb-4f7f-99e9-f4abf386948e"),
                             StepNumber = 1,
                             Text = "Sift the flour, sugar and salt, make a well in it."
                         },
                         new
                         {
-                            Id = new Guid("022fb291-ec19-4261-b7aa-933410d76069"),
-                            RecipeId = new Guid("79cd9fae-8d92-455b-aef7-f5f52d013354"),
+                            Id = new Guid("c6f6a57f-9305-4682-a0bf-4808787ab3f6"),
+                            RecipeId = new Guid("281c116e-72cb-4f7f-99e9-f4abf386948e"),
                             StepNumber = 2,
                             Text = "Crack in the eggs, add a bit of the milk."
                         },
                         new
                         {
-                            Id = new Guid("2391ba7b-dcce-47b9-bd38-a8eab81d0a49"),
-                            RecipeId = new Guid("79cd9fae-8d92-455b-aef7-f5f52d013354"),
+                            Id = new Guid("6d4a1581-6a1e-4df8-acfe-c4dffeb31957"),
+                            RecipeId = new Guid("281c116e-72cb-4f7f-99e9-f4abf386948e"),
                             StepNumber = 3,
                             Text = "Then start whisking it all together (you can use a mixer)."
                         },
                         new
                         {
-                            Id = new Guid("a310b8c2-af8d-45d9-b2fd-83b5c3ffb9b5"),
-                            RecipeId = new Guid("79cd9fae-8d92-455b-aef7-f5f52d013354"),
+                            Id = new Guid("d588310a-5356-4917-9a42-5c90b2c19499"),
+                            RecipeId = new Guid("281c116e-72cb-4f7f-99e9-f4abf386948e"),
                             StepNumber = 4,
                             Text = "Next, whisk in the rest of the milk and until you have a pancake batter that resembles the consistency of whipping cream."
                         },
                         new
                         {
-                            Id = new Guid("67c0da83-dd60-4228-aa91-b272e01d3fa0"),
-                            RecipeId = new Guid("79cd9fae-8d92-455b-aef7-f5f52d013354"),
+                            Id = new Guid("a3b6b9d9-27af-4390-82ee-5f4f0adadca8"),
+                            RecipeId = new Guid("281c116e-72cb-4f7f-99e9-f4abf386948e"),
                             StepNumber = 5,
                             Text = "Add on a bit of oil, and quickly swirl it around the pan. Make sure your pan is evenly nice and hot before you start cooking the pancakes. If the pan isn't hot enough, the recipe won't work."
                         },
                         new
                         {
-                            Id = new Guid("21f29c19-20bd-4fbc-aa6e-47e3c70e7d9a"),
-                            RecipeId = new Guid("79cd9fae-8d92-455b-aef7-f5f52d013354"),
+                            Id = new Guid("ccb229c5-3a20-4a66-b211-a1ce5355fcbd"),
+                            RecipeId = new Guid("281c116e-72cb-4f7f-99e9-f4abf386948e"),
                             StepNumber = 6,
                             Text = "Then pour on the pancake batter and quickly swirl it around."
                         },
                         new
                         {
-                            Id = new Guid("5e47dee5-4d04-4e1e-84f3-db8c66c4f5b4"),
-                            RecipeId = new Guid("79cd9fae-8d92-455b-aef7-f5f52d013354"),
+                            Id = new Guid("f6487049-e109-41f3-a6b4-e3fa4470092e"),
+                            RecipeId = new Guid("281c116e-72cb-4f7f-99e9-f4abf386948e"),
                             StepNumber = 7,
                             Text = "Cook until the batter is no longer liquid."
                         },
                         new
                         {
-                            Id = new Guid("0a1261db-a9cf-4981-9667-4a911ef127a2"),
-                            RecipeId = new Guid("79cd9fae-8d92-455b-aef7-f5f52d013354"),
+                            Id = new Guid("4254593a-c9c9-4aec-8a63-30330fd0380b"),
+                            RecipeId = new Guid("281c116e-72cb-4f7f-99e9-f4abf386948e"),
                             StepNumber = 8,
                             Text = "Serve with jam, sour cream, ice cream with berries and fruits - whatever you want!"
                         },
                         new
                         {
-                            Id = new Guid("5c5de2a1-fb50-4e85-b471-ab8735d46cc7"),
-                            RecipeId = new Guid("c0b7d8c2-7e8e-4e4b-906f-b132250cd9c7"),
+                            Id = new Guid("d1cbf335-e0b8-4303-b4d5-4f3b5ac4d662"),
+                            RecipeId = new Guid("e56df0f6-269e-4863-9bcd-60f6ec941ace"),
                             StepNumber = 1,
                             Text = "Wash, peel and grate apples and carrots. Combine."
                         },
                         new
                         {
-                            Id = new Guid("34c34a0b-3fc1-46f8-9c59-9948f508c923"),
-                            RecipeId = new Guid("c0b7d8c2-7e8e-4e4b-906f-b132250cd9c7"),
+                            Id = new Guid("e3996a19-ba8f-4a45-8636-e6dc99d7f5bb"),
+                            RecipeId = new Guid("e56df0f6-269e-4863-9bcd-60f6ec941ace"),
                             StepNumber = 2,
                             Text = "Add sugar and sour cream. Mix everything thoroughly so that the sugar melts to the maximum."
                         },
                         new
                         {
-                            Id = new Guid("b02e069e-8987-45d0-ab55-8f7cfad5caa3"),
-                            RecipeId = new Guid("c0b7d8c2-7e8e-4e4b-906f-b132250cd9c7"),
+                            Id = new Guid("d47ac5c6-e742-41d6-9dae-d4ceeb05e5a6"),
+                            RecipeId = new Guid("e56df0f6-269e-4863-9bcd-60f6ec941ace"),
                             StepNumber = 3,
                             Text = "Serve the delicious salad to the table."
                         },
                         new
                         {
-                            Id = new Guid("af1e87cc-3591-433e-9534-d20374f68f32"),
-                            RecipeId = new Guid("7f61bf9f-677b-49df-8327-a61b11eb9068"),
+                            Id = new Guid("b2875423-e702-4b54-8146-6d1f7a99b3fe"),
+                            RecipeId = new Guid("cd4a8f40-17ba-48b7-8239-b93dfaacb437"),
                             StepNumber = 1,
                             Text = "Run carrots, apples, (celery) through a juicer, alternating carrot, apple, and, optionally, celery, according to manufacturer's instructions."
                         },
                         new
                         {
-                            Id = new Guid("0cc4f581-6810-47d9-a593-f651cb88b7d1"),
-                            RecipeId = new Guid("7f61bf9f-677b-49df-8327-a61b11eb9068"),
+                            Id = new Guid("2bc1807a-7e4f-45c1-b8a9-430f268b4f68"),
+                            RecipeId = new Guid("cd4a8f40-17ba-48b7-8239-b93dfaacb437"),
                             StepNumber = 2,
                             Text = "Add ginger to juicer and process (optional)."
                         });
@@ -312,7 +316,9 @@ namespace RecipeBook.Data.Migrations.Recipe
                 {
                     b.HasOne("RecipeBook.Data.Models.Recipe", "Recipe")
                         .WithMany("Ingredients")
-                        .HasForeignKey("RecipeId");
+                        .HasForeignKey("RecipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Recipe");
                 });
@@ -321,7 +327,9 @@ namespace RecipeBook.Data.Migrations.Recipe
                 {
                     b.HasOne("RecipeBook.Data.Models.Recipe", "Recipe")
                         .WithMany("Steps")
-                        .HasForeignKey("RecipeId");
+                        .HasForeignKey("RecipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Recipe");
                 });

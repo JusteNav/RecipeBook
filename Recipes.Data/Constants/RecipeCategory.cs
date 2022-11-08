@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace RecipeBook.Data.Constants
 {
@@ -6,7 +7,8 @@ namespace RecipeBook.Data.Constants
     {
         Salad,
         Soup,
-        [Description("Main Course")]
+        //[Description("Main Course")]
+        [Display(Name = "Main Course")]
         MainCourse,
         Dessert,
         Juice,

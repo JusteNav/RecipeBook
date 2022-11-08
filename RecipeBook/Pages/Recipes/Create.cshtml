@@ -11,7 +11,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Recipe.Title" class="control-label"></label>
@@ -20,15 +20,57 @@
             </div>
             <div class="form-group">
                 <label asp-for="Recipe.Category" class="control-label"></label>
-                <select asp-for="Recipe.Category" class="form-control"></select>
+
+                <select asp-for="Recipe.Category" class="form-control" id="recipeCategory" asp-items="Html.GetEnumSelectList<RecipeBook.Data.Constants.RecipeCategory>()"></select>
                 <span asp-validation-for="Recipe.Category" class="text-danger"></span>
+            <br />
             </div>
-            <div class="form-group">
-                <label asp-for="Recipe.PictureTitle" class="control-label"></label>
-                <input asp-for="Recipe.PictureTitle" class="form-control" />
-                <span asp-validation-for="Recipe.PictureTitle" class="text-danger"></span>
+             <div class="form-group">
+                <label asp-for="Recipe.Note" class="control-label"></label>
+                <input asp-for="Recipe.Note" class="form-control" />
+                <span asp-validation-for="Recipe.Note" class="text-danger"></span>
             </div>
+
             <div class="form-group">
+                <label asp-for="Picture" class="control-label">Upload picture:</label>
+                <input type="file" asp-for="Picture" />
+            </div>
+
+
+            <div class="form-group">
+
+                <div>
+                <label class="control-label">Ingredients:</label>
+                <br />
+                    @for (int i = 0; i < 15; i++)
+                    {
+                        <p>
+                        <label class="control-label">Text:</label>
+                        <input asp-for= "Ingredients[i].FullTitle" class="form-control"/>
+                        <span asp-validation-for="Ingredients[i].FullTitle" class="text-danger"></span>
+
+                        <label class="control-label">Ingredient Category:</label>
+                            <select asp-for= "Ingredients[i].Category" class="form-control categories" asp-items="Html.GetEnumSelectList<RecipeBook.Data.Constants.IngredientType>()"></select>
+                        <span asp-validation-for="Ingredients[i].Category" class="text-danger"></span>
+                        </p>
+                    }
+                </div>
+
+                <div>
+                 <label class="control-label">Steps:</label>
+                <br />
+                    @for (int i = 0; i < 15; i++)
+                    {
+                        <br />
+                        <label class="control-label"> @(i+1)</label>
+                            <input asp-for="Steps[i].Text" class="form-control"/>
+                        <span asp-validation-for="Steps[i].Text" class="text-danger"></span>
+                            <input type="hidden" asp-for="Steps[i].StepNumber" value = "@(i+1)" class="form-control"/>
+                    }
+                </div>
+             </div>
+            <div class="form-group">
+                <br />
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
@@ -42,3 +84,22 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+    <script>
+            $(document).ready(function(){
+                                $('.categories').select2();
+        //        {
+        //    ajax: {
+        //        url: 'https://localhost:7184/Recipes/IngredientList',
+        //        data: function (params) {
+        //            var query = {
+        //                search: params.term
+        //            }
+        //            return query;
+        //        }
+        //    }
+        //}
+            //);
+        $('#recipeCategory').select2();
+            });
+    </script>
