@@ -4,16 +4,31 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">A fed person is a happy person!</h1>
-    <p>Please choose your ingredients:</p>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="text-center">
+            <br />
+            <h1>A fed person is a happy person!</h1>
+            <br />
+            </div>
+            <hr />
+    </div>
 </div>
-<div>
-    <form method="post">
-        @for (int i = 1; i < Model.CategoryIds.Length; i++)
-        {
-          <input type = "checkbox" name = "CheckedCategories" value = "@Model.CategoryIds[i]" > @Model.CategoriesForPrinting[i]
-        }
-        <input type="submit" value="Show Recipes"> 
-    </form>
+
+<div class="row">
+    <div class="col-md-8">
+             <h5>
+                Click this to choose your ingredients:
+            </h5>
+        <label for="id_label_multiple">
+            <form method="post">
+                <select asp-for="CheckedCategories" class="js-example-basic-multiple js-states form-control" 
+                id="id_label_multiple" multiple="multiple" name="CheckedCategories" 
+                asp-items="Html.GetEnumSelectList<RecipeBook.Data.Constants.IngredientType>()" style="width:500px">
+                </select>
+                <input type="submit" class="btn btn-primary" value="Show Recipes" onclick="thisOnClick()">
+            </form>
+        </label>
+    </div>
 </div>

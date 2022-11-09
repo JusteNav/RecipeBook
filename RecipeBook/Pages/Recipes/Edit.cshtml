@@ -11,7 +11,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Recipe.Id" />
             <div class="form-group">
@@ -21,14 +21,63 @@
             </div>
             <div class="form-group">
                 <label asp-for="Recipe.Category" class="control-label"></label>
-                <select asp-for="Recipe.Category" class="form-control"></select>
+                <select asp-for="Recipe.Category" class="form-control" id="recipeCategory" asp-items="Html.GetEnumSelectList<RecipeBook.Data.Constants.RecipeCategory>()"></select>
                 <span asp-validation-for="Recipe.Category" class="text-danger"></span>
+                <br />
+            <br />
             </div>
+             <div class="form-group">
+                <label asp-for="Recipe.Note" class="control-label"></label>
+                <input asp-for="Recipe.Note" class="form-control" />
+                <span asp-validation-for="Recipe.Note" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
-                <label asp-for="Recipe.PictureTitle" class="control-label"></label>
-                <input asp-for="Recipe.PictureTitle" class="form-control" />
-                <span asp-validation-for="Recipe.PictureTitle" class="text-danger"></span>
+                <label asp-for="Picture" class="control-label">Upload picture:</label>
+                <input type="file" asp-for="Picture" />
+                <span asp-validation-for="Picture" class="text-danger"></span>
             </div>
+             <br />
+
+            <div class="form-group">
+                <h5 class="control-label">Ingredients:</h5>
+                <br />
+                <ul class="create-ings">
+                    @for (int i = 0; i < Model.Recipe.Ingredients.Count; i++)
+                    {
+                        <ul class="create-ings">
+                            <li>
+                                    <label class="control-label">Text:</label>
+                                    <input asp-for= "@Model.Recipe.Ingredients.ElementAt(i).FullTitle" class="form-control"/>
+                                    <span asp-validation-for="@Model.Recipe.Ingredients.ElementAt(i).FullTitle" class="text-danger"></span>
+                            </li>
+
+                             <li>
+                                    <label class="control-label">Ingredient Category:</label>
+                                    <select asp-for= "@Model.Recipe.Ingredients.ElementAt(i).Category" class="form-control categories" asp-items="Html.GetEnumSelectList<RecipeBook.Data.Constants.IngredientType>()"></select>
+                                    <span asp-validation-for="@Model.Recipe.Ingredients.ElementAt(i).Category" class="text-danger"></span>
+                             </li>
+                        </ul>
+                    }
+                </ul>
+
+                <h5 class="control-label">Steps:</h5>
+                 <br>
+
+                <ol>
+                <br />
+                    @for (int i = 0; i < Model.Recipe.Steps.Count; i++)
+                    {
+                                <li> <input asp-for="Recipe.Steps.ElementAt(i).Text" class="form-control"/> </li>
+                                <span asp-validation-for="Recipe.Steps.ElementAt(i).Text" class="text-danger"></span>
+                                <input type="hidden" asp-for="Recipe.Steps.ElementAt(i).Text" value = "@(i+1)" class="form-control"/>
+                                   
+                    }
+                </ol>
+
+
+            </div>
+
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
@@ -43,3 +92,9 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+        <script>
+            $(document).ready(function(){
+            $('.categories').select2();
+            $('#recipeCategory').select2();
+                });
+        </script>

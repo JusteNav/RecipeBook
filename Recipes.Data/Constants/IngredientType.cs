@@ -29,7 +29,7 @@ namespace RecipeBook.Data.Constants
         //[Description("Sour Cream")]
         [Display(Name = "Sour Cream")]
         SourCream,
-       // [Description("Heavy Cream")]
+        //[Description("Heavy Cream")]
         [Display(Name = "Heavy Cream")]
         HeavyCream,
         //[Description("Cheddar Cheese")]
@@ -45,7 +45,7 @@ namespace RecipeBook.Data.Constants
 
         Carrots,
         Potatoes,
-       // [Description("Bell Pepper")]
+        //[Description("Bell Pepper")]
         [Display(Name = "Bell Pepper")]
         BellPepper,
         Cauliflower,
@@ -60,15 +60,15 @@ namespace RecipeBook.Data.Constants
         [Display(Name = "Brown Sugar")]
         BrownSugar,
         Oil,
-       // [Description("Tomato Sauce")]
+        //[Description("Tomato Sauce")]
         [Display(Name = "Tomato Sauce")]
         TomatoSauce,
         Mustard,
-       // [Description("Thousand Island Dressing")]
+        //[Description("Thousand Island Dressing")]
         [Display(Name = "Thousand Island Dressing")]
         ThousandIslandDressing,
         Mayonnaise,
-       // [Description("Baking Powder")]
+        //[Description("Baking Powder")]
         [Display(Name = "Baking Powder")]
         BakingPowder,
         //[Description("Dark Chocolate Chips")]

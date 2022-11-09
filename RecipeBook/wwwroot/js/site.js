@@ -4,3 +4,11 @@
 // Write your JavaScript code.
 
 
+$(document).ready(function () {
+    $('#id_label_multiple').select2();
+
+    function thisOnClick() {
+        this.preventDefault();
+        let izveletieIntegrenti = $('#mySelect2').find(':selected');
+    }
+});

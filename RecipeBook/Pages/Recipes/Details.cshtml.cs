@@ -19,13 +19,14 @@ namespace RecipeBook.Pages.Recipes
             _context = context;
         }
 
-      public Recipe Recipe { get; set; }
+        public Recipe Recipe { get; set; }
         public List<string> Steps { get; set; }
         public List<string> Ingredients { get; set; }
-
+        public string PreviousPage { get; set; }
 
         public async Task<IActionResult> OnGetAsync(Guid? id)
         {
+            PreviousPage = Request.Headers["Referer"].ToString();
 
             if (id == null || _context.Recipes == null)
             {

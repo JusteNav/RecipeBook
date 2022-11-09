@@ -11,12 +11,6 @@ namespace RecipeBook.Data.Constants
 {
     public static class EnumHelper
     {
-        private static readonly string[] IngredientCategories = Enum.GetNames<IngredientType>();
-
-        public static readonly int[] IngredientIDs = IngredientCategories.Select(c => GetEnumID(c, typeof(IngredientType))).ToArray();
-
-        public static readonly string[] IngredientCategoryText = IngredientCategories.Select(category => GetValueOrDescriptionString(category, typeof(IngredientType))).ToArray();
-
         public static readonly string[] RecipeCategories = Enum.GetNames<RecipeCategory>();
         public static readonly int[] RecipeCategoryIDs = RecipeCategories.Select(c => GetEnumID(c, typeof(RecipeCategory))).ToArray();
         public static readonly string[] RecipeCategoryText= RecipeCategories.Select(category => GetValueOrDescriptionString(category, typeof(RecipeCategory))).ToArray();
@@ -31,7 +25,7 @@ namespace RecipeBook.Data.Constants
 
             var Description = (DescriptionAttribute)Attribute.GetCustomAttribute(memInfo[0], typeof(DescriptionAttribute), false);
 
-            return (Description != null) ? Description.Description: enumVal.ToString();
+            return (Description != null) ? Description.Description : enumVal.ToString();
         }
 
         public static int GetEnumID(string enumString, Type enumType)
@@ -40,22 +34,6 @@ namespace RecipeBook.Data.Constants
             var enumVal = Enum.Parse(enumType, replaced);
 
             return (int)enumVal;
-        }
-
-        public static IngredientType GetIngredientType(string enumString)
-        {
-            Regex.Replace(enumString, @"\s+", ""); //removes whitespaces
-            var enumVal = (IngredientType)Enum.Parse(typeof(IngredientType), enumString);
-
-            return enumVal;
-        }
-
-        public static RecipeCategory GetRecipeCategory(string enumString)
-        {
-            Regex.Replace(enumString, @"\s+", ""); //removes whitespaces
-            var enumVal = (RecipeCategory)Enum.Parse(typeof(RecipeCategory), enumString);
-
-            return enumVal;
         }
     }
 }

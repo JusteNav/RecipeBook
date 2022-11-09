@@ -21,7 +21,7 @@ namespace RecipeBook.Pages.Recipes
         public CreateModel(Data.RecipeContext context, IWebHostEnvironment environment)
         {
             _context = context;
-            _environment = environment; 
+            _environment = environment;
         }
 
         public IActionResult OnGet()
@@ -44,8 +44,8 @@ namespace RecipeBook.Pages.Recipes
         public async Task<IActionResult> OnPostAsync()
         {
             ModelState.Clear(); //why does this work? 
-            var file = Path.Combine(_environment.ContentRootPath, "wwwroot", "images", Picture.FileName);
-            using (var fileStream = new FileStream(file, FileMode.Create)) //!Not a secure solution - additional security measures would be needed in a real-world scenario
+            var path = Path.Combine(_environment.ContentRootPath, "wwwroot", "images", Picture.FileName);
+            using (var fileStream = new FileStream(path, FileMode.Create)) //!Not a secure solution - additional security measures would be needed in a real-world scenario
             {
                 await Picture.CopyToAsync(fileStream);
             }
@@ -56,7 +56,8 @@ namespace RecipeBook.Pages.Recipes
             Recipe.PictureTitle = Picture.FileName.ToString();
             Ingredients.RemoveAll(c => string.IsNullOrEmpty(c.FullTitle) || c.Category == null);
             Steps.RemoveAll(c => string.IsNullOrEmpty(c.Text));
-            Ingredients.Select(i => EnumHelper.GetIngredientType(i.Category.ToString()));
+            //Ingredients.Select(i => EnumHelper.GetIngredientType(i.Category.ToString()));
+            Ingredients.Select(i => Enum.Parse(typeof(IngredientType), i.Category.ToString()));
 
             foreach (var ing in Ingredients)
             {

@@ -14,19 +14,18 @@
         <form method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Recipe.Title" class="control-label"></label>
+                <label asp-for="Recipe.Title" class="control-label">Title:</label>
                 <input asp-for="Recipe.Title" class="form-control" />
                 <span asp-validation-for="Recipe.Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Recipe.Category" class="control-label"></label>
-
+                <label asp-for="Recipe.Category" class="control-label">Category:</label>
                 <select asp-for="Recipe.Category" class="form-control" id="recipeCategory" asp-items="Html.GetEnumSelectList<RecipeBook.Data.Constants.RecipeCategory>()"></select>
                 <span asp-validation-for="Recipe.Category" class="text-danger"></span>
             <br />
             </div>
              <div class="form-group">
-                <label asp-for="Recipe.Note" class="control-label"></label>
+                <label asp-for="Recipe.Note" class="control-label">Note:</label>
                 <input asp-for="Recipe.Note" class="form-control" />
                 <span asp-validation-for="Recipe.Note" class="text-danger"></span>
             </div>
@@ -34,40 +33,47 @@
             <div class="form-group">
                 <label asp-for="Picture" class="control-label">Upload picture:</label>
                 <input type="file" asp-for="Picture" />
+                <span asp-validation-for="@Model.Picture" class="text-danger"></span>
             </div>
-
+             <br>
 
             <div class="form-group">
 
                 <div>
-                <label class="control-label">Ingredients:</label>
+                <h5 class="control-label">Ingredients:</h5>
                 <br />
+                <ul class="create-ings">
                     @for (int i = 0; i < 15; i++)
                     {
-                        <p>
-                        <label class="control-label">Text:</label>
-                        <input asp-for= "Ingredients[i].FullTitle" class="form-control"/>
-                        <span asp-validation-for="Ingredients[i].FullTitle" class="text-danger"></span>
-
-                        <label class="control-label">Ingredient Category:</label>
-                            <select asp-for= "Ingredients[i].Category" class="form-control categories" asp-items="Html.GetEnumSelectList<RecipeBook.Data.Constants.IngredientType>()"></select>
-                        <span asp-validation-for="Ingredients[i].Category" class="text-danger"></span>
-                        </p>
+                                <ul class="create-ings"> 
+                                 <li> 
+                              <label class="control-label">Text:</label>
+                              <input asp-for= "Ingredients[i].FullTitle" class="form-control"/>
+                              <span asp-validation-for="Ingredients[i].FullTitle" class="text-danger"></span>
+                             </li>
+                                 <li> 
+                              <label class="control-label">Ingredient Category:</label>
+                              <select asp-for= "Ingredients[i].Category" class="form-control categories" asp-items="Html.GetEnumSelectList<RecipeBook.Data.Constants.IngredientType>()"></select>
+                              <span asp-validation-for="Ingredients[i].Category" class="text-danger"></span>
+                             </li>
+                             <br>
+                        </ul>
                     }
+                </ul>
                 </div>
 
-                <div>
-                 <label class="control-label">Steps:</label>
+                 <h5 class="control-label">Steps:</h5>
+                 <br>
+
+                <ol>
                 <br />
                     @for (int i = 0; i < 15; i++)
                     {
-                        <br />
-                        <label class="control-label"> @(i+1)</label>
-                            <input asp-for="Steps[i].Text" class="form-control"/>
+                        <li> <input asp-for="Steps[i].Text" class="form-control"/></li>
                         <span asp-validation-for="Steps[i].Text" class="text-danger"></span>
-                            <input type="hidden" asp-for="Steps[i].StepNumber" value = "@(i+1)" class="form-control"/>
+                        <input type="hidden" asp-for="Steps[i].StepNumber" value = "@(i+1)" class="form-control"/>
                     }
-                </div>
+                </ol>
              </div>
             <div class="form-group">
                 <br />
@@ -87,19 +93,7 @@
 
     <script>
             $(document).ready(function(){
-                                $('.categories').select2();
-        //        {
-        //    ajax: {
-        //        url: 'https://localhost:7184/Recipes/IngredientList',
-        //        data: function (params) {
-        //            var query = {
-        //                search: params.term
-        //            }
-        //            return query;
-        //        }
-        //    }
-        //}
-            //);
+        $('.categories').select2();
         $('#recipeCategory').select2();
             });
     </script>

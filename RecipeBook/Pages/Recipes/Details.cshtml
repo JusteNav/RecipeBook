@@ -11,37 +11,98 @@
     <img class = "recipepic-big" src="~/images/@Model.Recipe.PictureTitle" width="400px" alt="food picture"/>
 
     <hr />
-    <p>
-        <b>Category:   </b>
-        @Html.DisplayFor(model => model.Recipe.Category)
-    </p>
+</div>
+<table class= "details">
+    <tr>
+    <td>
+         <p>
+             <b>Category:</b>
+                @Html.DisplayFor(model => model.Recipe.Category)
+        </p>
+    </td>
+    <td>
 
+    </td>
+    </tr>
+
+
+
+<tr>
+    <td width: 50%>
         <h4>Ingredients:</h4>
         <ul>
-        @foreach (string ingredient in Model.Ingredients)
-        {
-                <li>
-                @ingredient
-                </li>
-        }
+                @foreach (string ingredient in Model.Ingredients)
+                {
+                    <li>
+                        @ingredient
+                    </li>
+                }
         </ul>
-        <hr />
-
-        <h4>Steps:</h4>
+    </td>
+     <td>
+         <h4>Steps:</h4>
         <ol>
-            @for (int i = 0; i < Model.Steps.Count; i++)
-            {
-                 <li>
+                @for (int i = 0; i < Model.Steps.Count; i++)
+                {
+                     <li>
                     @Model.Steps[i]
-                </li>
-            }
+                    </li>
+                }
 
         </ol>
-</div>
-    <hr />
+        <br />
+    </td>
+</tr>
+</table>
 
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.Recipe?.Id">Edit</a> |
-    <a asp-page="./Delete" asp-route-id="@Model.Recipe?.Id">Delete</a> |
-    <a asp-page="./Index">Back to List</a>
-</div>
+
+    @if (!string.IsNullOrEmpty(Model.Recipe.Note))
+    {
+             <hr />
+            <h4>Note:</h4>
+            <p>@Model.Recipe.Note</p>
+    }
+            <div>
+            <a asp-page="./Edit" asp-route-id="@Model.Recipe?.Id">Edit</a> |
+            <a asp-page="./Delete" asp-route-id="@Model.Recipe?.Id">Delete</a> |
+            <a href="@Model.PreviousPage">Back to List</a>
+        </div>
+
+@*<tr>
+    <td width: 50%>
+            @if (!string.IsNullOrEmpty(Model.Recipe.Note))
+            {
+         <hr />
+        <h4>Note:</h4>
+        <p>@Model.Recipe.Note</p>
+            }
+    </td>
+     <td>
+    </td>
+</tr>
+
+<tr>
+    <td>
+        <div>
+            <a asp-page="./Edit" asp-route-id="@Model.Recipe?.Id">Edit</a> |
+            <a asp-page="./Delete" asp-route-id="@Model.Recipe?.Id">Delete</a> |
+            <a href="@Model.PreviousPage">Back to List</a>
+        </div>
+    </td>
+     <td>
+    </td>
+</tr>
+
+<tr>
+    <td>
+        <div>
+            <br />
+        </div>
+    </td>
+     <td>
+    </td>
+</tr>
+
+</table>
+
+*@

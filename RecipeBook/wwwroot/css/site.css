@@ -16,3 +16,57 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.poga1 {
+    background-color: red;
+    border-radius: 20px;
+    border: 0;
+}
+
+.tags {
+    width: 130px;
+    position: fixed;
+    z-index: 56;
+    top: 145px;
+    left: 10px;
+    background: #f8f5f0;
+    overflow-x: hidden;
+    padding: 8px 0;
+    list-style: none
+}
+.results > li {
+    height: 300px;
+    width: 250px;
+    list-style: none;
+    flex-basis: 350px;
+}
+
+.results li img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    border-radius: 5px;
+    border-radius: 5px
+}
+
+
+.results {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+}
+
+.recipe-components{
+    list-style: none;
+}
+
+.details {
+    vertical-align: top;
+    text-align: left;
+    width: 100%
+}
+
+.create-ings{
+    list-style:none
+}
