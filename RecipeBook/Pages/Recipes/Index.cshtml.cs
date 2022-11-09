@@ -39,7 +39,7 @@ namespace RecipeBook.Pages.Recipes
 
                 if (!string.IsNullOrEmpty(passedIDs) )
                 {
-                    //since the query required would be very complex to write and the amount of data is small, the logic is performed client-side
+                    //since the query required would be complex to write and the amount of data is small, the logic is performed client-side
                     DisplayedRecipes = new List<Recipe>();
 
                     //IDs passed as parameters in the URL

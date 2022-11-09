@@ -56,7 +56,6 @@ namespace RecipeBook.Pages.Recipes
             Recipe.PictureTitle = Picture.FileName.ToString();
             Ingredients.RemoveAll(c => string.IsNullOrEmpty(c.FullTitle) || c.Category == null);
             Steps.RemoveAll(c => string.IsNullOrEmpty(c.Text));
-            //Ingredients.Select(i => EnumHelper.GetIngredientType(i.Category.ToString()));
             Ingredients.Select(i => Enum.Parse(typeof(IngredientType), i.Category.ToString()));
 
             foreach (var ing in Ingredients)

@@ -11,11 +11,6 @@ namespace RecipeBook.Pages
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
-        //public string[] CategoriesForPrinting { get => categoriesForPrinting; set => categoriesForPrinting = value; }
-        //private string[] categoriesForPrinting = EnumHelper.IngredientCategoryText;
-
-        //public int[] CategoryIds { get => categoryIds; set => categoryIds = value; }
-        //private int[] categoryIds = EnumHelper.IngredientIDs;
 
         [BindProperty]
         public int[] CheckedCategories { get => checkedCategories; set => checkedCategories = value; }
