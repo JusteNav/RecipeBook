@@ -45,17 +45,19 @@
                 <ul class="create-ings">
                     @for (int i = 0; i < Model.Recipe.Ingredients.Count; i++)
                     {
+                                        <input type="hidden" asp-for="Ingredients[i].Id" />
+                                        <input type="hidden" asp-for="Ingredients[i].RecipeId" />
                         <ul class="create-ings">
                             <li>
                                     <label class="control-label">Text:</label>
-                                    <input asp-for= "@Model.Recipe.Ingredients.ElementAt(i).FullTitle" class="form-control"/>
-                                    <span asp-validation-for="@Model.Recipe.Ingredients.ElementAt(i).FullTitle" class="text-danger"></span>
+                                        <input asp-for= "Ingredients[i].FullTitle" class="form-control"/>
+                                        <span asp-validation-for="Ingredients[i].FullTitle" class="text-danger"></span>
                             </li>
 
                              <li>
                                     <label class="control-label">Ingredient Category:</label>
-                                    <select asp-for= "@Model.Recipe.Ingredients.ElementAt(i).Category" class="form-control categories" asp-items="Html.GetEnumSelectList<RecipeBook.Data.Constants.IngredientType>()"></select>
-                                    <span asp-validation-for="@Model.Recipe.Ingredients.ElementAt(i).Category" class="text-danger"></span>
+                                        <select asp-for= "Ingredients[i].Category" class="form-control categories" asp-items="Html.GetEnumSelectList<RecipeBook.Data.Constants.IngredientType>()"></select>
+                                        <span asp-validation-for="Ingredients[i].Category" class="text-danger"></span>
                              </li>
                         </ul>
                     }
@@ -68,9 +70,11 @@
                 <br />
                     @for (int i = 0; i < Model.Recipe.Steps.Count; i++)
                     {
-                                <li> <input asp-for="Recipe.Steps.ElementAt(i).Text" class="form-control"/> </li>
-                                <span asp-validation-for="Recipe.Steps.ElementAt(i).Text" class="text-danger"></span>
-                                <input type="hidden" asp-for="Recipe.Steps.ElementAt(i).Text" value = "@(i+1)" class="form-control"/>
+                                    <input type="hidden" asp-for="Steps[i].Id" />
+                                    <input type="hidden" asp-for="Steps[i].RecipeId" />
+                                    <li> <input asp-for="Steps[i].Text" class="form-control"/> </li>
+                                    <span asp-validation-for="Steps[i].Text" class="text-danger"></span>
+                                    <input type="hidden" asp-for="Steps[i].Text" value = "@(i+1)" class="form-control"/>
                                 <br />
                                    
                     }

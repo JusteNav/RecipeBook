@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using RecipeBook;
+using RecipeBook.Data.Constants;
 using RecipeBook.Data.Models;
 
 namespace RecipeBook.Pages.Recipes
@@ -27,6 +28,10 @@ namespace RecipeBook.Pages.Recipes
         public Recipe Recipe { get; set; } = default!;
 
         private Recipe _recipe { get; set; }
+        [BindProperty]
+        public List<Ingredient> Ingredients { get; set; }
+        [BindProperty]
+        public List<Step> Steps { get; set; }
 
         [BindProperty]
         public IFormFile? Picture { get; set; }
@@ -46,8 +51,8 @@ namespace RecipeBook.Pages.Recipes
                 return NotFound();
             }
             Recipe = _recipe;
-            Recipe.Steps = _recipe.Steps;
-            Recipe.Ingredients = _recipe.Ingredients; 
+            Steps = _recipe.Steps.OrderBy(n => n.StepNumber).ToList();
+            Ingredients = _recipe.Ingredients.ToList(); 
             return Page();
         }
 
@@ -59,16 +64,24 @@ namespace RecipeBook.Pages.Recipes
                 .Select(c => c.PictureTitle)
                 .FirstOrDefaultAsync();
 
+            Ingredients.RemoveAll(c => string.IsNullOrEmpty(c.FullTitle) || c.Category == null);
+            Steps.RemoveAll(c => string.IsNullOrEmpty(c.Text));
+            Ingredients.Select(i => Enum.Parse(typeof(IngredientType), i.Category.ToString()));
+
+            Recipe.Ingredients = Ingredients;
+            Recipe.Steps = Steps;
+
 
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
+
             if (Picture != null)
             {
                 string? path;
-                if(oldPictureTitle != null)
+                if (oldPictureTitle != null)
                 {
                     path = Path.Combine(_environment.ContentRootPath, "wwwroot/images", oldPictureTitle);
                 }
@@ -76,6 +89,7 @@ namespace RecipeBook.Pages.Recipes
                 {
                     path = Path.Combine(_environment.ContentRootPath, "wwwroot/images");
                 }
+
                 if (System.IO.File.Exists(path))
                 {
                     System.IO.File.Delete(path);
@@ -91,10 +105,19 @@ namespace RecipeBook.Pages.Recipes
             }
             else
             {
-                Recipe.PictureTitle = _recipe.PictureTitle;
+                Recipe.PictureTitle = oldPictureTitle;
             }
 
+
             _context.Attach(Recipe).State = EntityState.Modified;
+            foreach(var step in Steps)
+            {
+                _context.Attach(step).State = EntityState.Modified;
+            }
+            foreach (var ing in Ingredients)
+            {
+                _context.Attach(ing).State = EntityState.Modified;
+            }
 
             try
             {
