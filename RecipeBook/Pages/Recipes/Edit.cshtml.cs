@@ -134,9 +134,6 @@ namespace RecipeBook.Pages.Recipes
                     throw;
                 }
             }
-
-
-
             return RedirectToPage("./Index");
         }
 

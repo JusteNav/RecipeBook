@@ -72,6 +72,7 @@
                     {
                                     <input type="hidden" asp-for="Steps[i].Id" />
                                     <input type="hidden" asp-for="Steps[i].RecipeId" />
+                                    <input type="hidden" asp-for="Steps[i].StepNumber" />
                                     <li> <input asp-for="Steps[i].Text" class="form-control"/> </li>
                                     <span asp-validation-for="Steps[i].Text" class="text-danger"></span>
                                     <input type="hidden" asp-for="Steps[i].Text" value = "@(i+1)" class="form-control"/>
