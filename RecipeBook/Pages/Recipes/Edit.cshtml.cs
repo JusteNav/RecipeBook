@@ -54,6 +54,12 @@ namespace RecipeBook.Pages.Recipes
         public async Task<IActionResult> OnPostAsync()
         {
             ModelState.Clear();
+            var oldPictureTitle = await _context.Recipes
+                .Where(i => i.Id == Recipe.Id)
+                .Select(c => c.PictureTitle)
+                .FirstOrDefaultAsync();
+
+
             if (!ModelState.IsValid)
             {
                 return Page();
@@ -62,9 +68,9 @@ namespace RecipeBook.Pages.Recipes
             if (Picture != null)
             {
                 string? path;
-                if(Recipe.PictureTitle != null)
+                if(oldPictureTitle != null)
                 {
-                    path = Path.Combine(_environment.ContentRootPath, "wwwroot/images", Recipe.PictureTitle);
+                    path = Path.Combine(_environment.ContentRootPath, "wwwroot/images", oldPictureTitle);
                 }
                 else
                 {

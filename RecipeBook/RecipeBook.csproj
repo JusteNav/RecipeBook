@@ -41,7 +41,7 @@
 
   <ItemGroup>
     <None Include="wwwroot\images\1.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Include="wwwroot\images\10.jpg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
